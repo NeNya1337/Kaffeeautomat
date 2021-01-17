@@ -19,4 +19,13 @@ public class Drink {
     public int getWater(){
         return this.water;
     }
+    public String validate(int water){
+        String missing = "";
+        if(water < this.getWater()) missing += "water,";
+        return missing;
+    }
+/*
+    public int getMilk() {
+        return 0;
+    }*/
 }

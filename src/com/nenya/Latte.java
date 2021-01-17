@@ -1,23 +1,22 @@
 package com.nenya;
 
-public class Latte  extends Drink{
-    private final int beans;
+public class Latte  extends Coffee{
     private final int milk;
     public Latte(int index, String name, int water, int milk, int beans){
-        super(index, name, water);
+        super(index, name, water, beans);
         this.milk = milk;
-        this.beans = beans;
     }
     public void showDrink(){
         super.showDrink();
         System.out.print("It adds " + getMilk() + " ml milk. ");
-        System.out.println("It uses " + getBeans() + " beans.");
     }
-    public int getBeans(){
-        return this.beans;
-    }
-
     public int getMilk(){
         return this.milk;
+    }
+    public String validate(int milk, int beans, int water){
+        String missing = "";
+        missing += super.validate(beans, water);
+        if(milk < this.getMilk()) missing += "milk,";
+        return missing;
     }
 }

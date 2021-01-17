@@ -15,6 +15,7 @@ public class Main {
         km.addDrink(new Coffee(km.countDrinks(), "großer Kaffee", 250, 25));
         km.addDrink(new Latte(km.countDrinks(), "kleiner Latte", 75, 75, 15));
         km.addDrink(new Latte(km.countDrinks(), "großer Latte", 125, 125, 15));
+        km.addDrink(new Drink(km.countDrinks(), "heißes Wasser", 250));
         while(true) {
             if (!showServices(km)) break;
         }
@@ -27,7 +28,7 @@ public class Main {
     private static boolean showServices(Kaffeemaschine km){
         final Scanner sc = new Scanner(System.in);
         boolean off = true;
-        System.out.println("This ist the Kaffeemaschine " + km.getName() + ".");
+        System.out.println("\nThis ist the Kaffeemaschine " + km.getName() + ".");
         try{
             System.out.println("What can I do for you?");
             System.out.println("1 - List drinks");
@@ -37,7 +38,7 @@ public class Main {
             int command = sc.nextInt();
             switch (command) {
                 case 1 -> km.showDrinks();
-                case 2 -> System.out.println("Making drink...");
+                case 2 -> km.makeDrink();
                 case 3 -> System.out.println("Checking machine...");
                 case 4 -> off = false;
                 default -> throw new ActionNotFoundException();

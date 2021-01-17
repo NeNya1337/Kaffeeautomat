@@ -8,9 +8,15 @@ public class Coffee extends Drink{
     }
     public void showDrink(){
         super.showDrink();
-        System.out.println("It uses " + getBeans() + " beans.");
+        System.out.print("It uses " + getBeans() + " beans.");
     }
     public int getBeans(){
         return this.beans;
+    }
+    public String validate(int beans, int water){
+        String missing = "";
+        missing += super.validate(water);
+        if(beans < this.getBeans()) missing += "beans";
+        return missing;
     }
 }
