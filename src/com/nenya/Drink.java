@@ -2,9 +2,11 @@ package com.nenya;
 
 public class Drink {
     private final String name;
+    private final int index;
     private final int water;
 
-    public Drink(String name, int water){
+    public Drink(int index, String name, int water){
+        this.index = index;
         this.name = name;
         this.water = water;
     }

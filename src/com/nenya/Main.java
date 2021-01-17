@@ -11,10 +11,10 @@ public class Main {
         Kaffeemaschine km = new Kaffeemaschine("Küche");
         System.out.println(checkMachine(km));
         km.startMachine();
-        km.addDrink(new Coffee("kleiner Kaffee", 150, 15));
-        km.addDrink(new Coffee("großer Kaffee", 250, 25));
-        km.addDrink(new Latte("kleiner Latte", 75, 75, 15));
-        km.addDrink(new Latte("großer Latte", 125, 125, 15));
+        km.addDrink(new Coffee(km.countDrinks(), "kleiner Kaffee", 150, 15));
+        km.addDrink(new Coffee(km.countDrinks(), "großer Kaffee", 250, 25));
+        km.addDrink(new Latte(km.countDrinks(), "kleiner Latte", 75, 75, 15));
+        km.addDrink(new Latte(km.countDrinks(), "großer Latte", 125, 125, 15));
         while(true) {
             if (!showServices(km)) break;
         }
@@ -43,7 +43,11 @@ public class Main {
                 default -> throw new ActionNotFoundException();
             }
         } catch(ActionNotFoundException anfe){
+            System.out.print("Main: ");
             System.out.println(anfe.getMessage());
+        } catch(Exception e){
+            System.out.print("Main: ");
+            System.out.println("Invalid input. Try again!");
         }
         return off;
     }

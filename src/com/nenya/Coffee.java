@@ -2,8 +2,8 @@ package com.nenya;
 
 public class Coffee extends Drink{
     private final int beans;
-    public Coffee(String name, int water, int beans){
-        super(name, water);
+    public Coffee(int index, String name, int water, int beans){
+        super(index, name, water);
         this.beans = beans;
     }
     public void showDrink(){

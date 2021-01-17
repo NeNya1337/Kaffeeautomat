@@ -31,17 +31,24 @@ public class Kaffeemaschine {
         drinks.add(drink);
     }
 
+    public int countDrinks(){
+        return drinks.size();
+    }
+
     public void showDrinks(){
         System.out.println("This machine can do " + drinks.size() + " different drinks.");
+        int i = 1;
         for (Drink drink : drinks){
+            System.out.print(i +": ");
             drink.showDrink();
+            i++;
         }
     }
 
     public void startMachine(){
         if(this.trash >= maxTrash) requestTrash();
-        if(this.water == 0) requestWater();
-        if(this.beans == 0) requestBeans();
+        while(this.water == 0) requestWater();
+        while(this.beans == 0) requestBeans();
         System.out.println("Machine started");
     }
 
@@ -55,36 +62,35 @@ public class Kaffeemaschine {
         this.water += amount;
     }
     private void requestWater(){
-        int amount = 0;
-        while(amount == 0){
-            try {
-                System.out.println("Please fill the water! Input amount:");
-                amount = sc.nextInt();
-                if (amount + water > maxWater) throw new OverflowException("Too much water!");
-                fillWater(amount);
-            } catch(OverflowException oe){
-                System.out.println(oe.getMessage());
-            } catch (Exception e){
-                System.out.println("That's no valid amount!");
-            }
+        int amount;
+        try {
+            System.out.println("Please fill the water! Input amount:");
+            amount = sc.nextInt();
+            if (amount + water > maxWater) throw new OverflowException("Too much water!");
+            fillWater(amount);
+        } catch(OverflowException oe){
+            System.out.println("KM: " + getWater());
+            System.out.println(oe.getMessage());
+        } catch (Exception e){
+            System.out.print("KM: ");
+            System.out.println("That's no valid amount!");
         }
+
     }
     private void fillBeans(int amount){
         this.beans += amount;
     }
     private void requestBeans(){
-        int amount = 0;
-        while(amount == 0){
-            try {
-                System.out.println("Please fill the beans! Input amount:");
-                amount = sc.nextInt();
-                if (amount + beans > maxBeans) throw new OverflowException("Too much beans!");
-                fillBeans(amount);
-            } catch(OverflowException oe){
-                System.out.println(oe.getMessage());
-            } catch (Exception e){
-                System.out.println("That's no valid amount!");
-            }
+        int amount;
+        try {
+            System.out.println("Please fill the beans! Input amount:");
+            amount = sc.nextInt();
+            if (amount + beans > maxBeans) throw new OverflowException("Too much beans!");
+            fillBeans(amount);
+        } catch(OverflowException oe){
+            System.out.println(oe.getMessage());
+        } catch (Exception e){
+            System.out.println("That's no valid amount!");
         }
     }
     private void requestTrash(){

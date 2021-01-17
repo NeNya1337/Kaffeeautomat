@@ -3,8 +3,8 @@ package com.nenya;
 public class Latte  extends Drink{
     private final int beans;
     private final int milk;
-    public Latte(String name, int water, int milk, int beans){
-        super(name, water);
+    public Latte(int index, String name, int water, int milk, int beans){
+        super(index, name, water);
         this.milk = milk;
         this.beans = beans;
     }
