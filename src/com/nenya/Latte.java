@@ -1,7 +1,8 @@
 package com.nenya;
 
 public class Latte  extends Coffee{
-    private final int milk;
+    private int milk;
+    private int foam;
     public Latte(int index, String name, int water, int milk, int beans){
         super(index, name, water, beans);
         this.milk = milk;
@@ -12,6 +13,19 @@ public class Latte  extends Coffee{
     }
     public int getMilk(){
         return this.milk;
+    }
+    public void setMilk(int milk){
+        this.milk = milk;
+    }
+    public int getFoam(){
+        return this.foam;
+    }
+    public void setFoam(int foam){
+        this.foam = foam;
+    }
+    public void beatMilk(int milk){
+        setFoam(getMilk()- milk);
+        setMilk(getMilk() - getFoam());
     }
     public String validate(int milk, int beans, int water){
         String missing = "";
