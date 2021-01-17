@@ -3,7 +3,8 @@ package com.nenya;
 import java.util.*;
 
 public class Kaffeemaschine {
-    private boolean status;
+    private final String name;
+    private final boolean status;
     private static final int maxBeans = 255;
     private static final int maxWater = 3000;
     private static final int maxTrash = 20;
@@ -14,6 +15,18 @@ public class Kaffeemaschine {
     private final Scanner sc = new Scanner(System.in);
     private final ArrayList<Drink> drinks = new ArrayList<>();
 
+    public Kaffeemaschine(String name){
+        this.name = name;
+        this.status = true;
+        this.trash = 0;
+        this.water = 0;
+        this.beans = 0;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
     public void addDrink(Drink drink){
         drinks.add(drink);
     }
@@ -23,13 +36,6 @@ public class Kaffeemaschine {
         for (Drink drink : drinks){
             drink.showDrink();
         }
-    }
-
-    public Kaffeemaschine(){
-        this.status = true;
-        this.trash = 0;
-        this.water = 0;
-        this.beans = 0;
     }
 
     public void startMachine(){
